@@ -1,7 +1,7 @@
 <?php
 namespace Iriven\Plugin\Sessions\Flash;
 use Iriven\Plugin\Sessions\Interfaces\FlashMessagesInterface;
-use  Iriven\Plugin\Sessions\Session;
+use  Iriven\Plugin\Sessions\PHPSession;
 
 class FlashMessages implements  FlashMessagesInterface {
     /**
@@ -79,7 +79,7 @@ class FlashMessages implements  FlashMessagesInterface {
         self::ERROR   => 'alert-danger',
     ];
     /**
-     * @var Session
+     * @var PHPSession
      */
     private $iSession;
 
@@ -95,10 +95,10 @@ class FlashMessages implements  FlashMessagesInterface {
     /**
      * FlashMessages constructor.
      *
-     * @param Session $session
+     * @param PHPSession $session
      * @param string|null $lock
      */
-    public function __construct(Session $session, $lock = null)
+    public function __construct(PHPSession $session, $lock = null)
     {
         $this->iSession = $session;
         $this->flashLock = !empty($lock)? sha1($lock) : sha1($this->flashLock);

@@ -3,7 +3,7 @@ namespace Iriven\Plugin\Sessions;
 use Iriven\Plugin\Sessions\Flash\FlashMessages;
 use Iriven\Plugin\Sessions\Interfaces\SessionInterface;
 
-class Session implements SessionInterface {
+class PHPSession implements SessionInterface {
     /**
      * @var
      */
