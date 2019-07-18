@@ -18,7 +18,7 @@ class PHPSession implements SessionInterface {
      * @param bool $autoStart
      * @param int $idle
      */
-    public function __construct(bool $autoStart=false ,int $idle=60)
+    public function __construct(int $idle=60, bool $autoStart=false)
     {
         if(!$this->isStarted())
         {
