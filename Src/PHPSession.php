@@ -46,7 +46,7 @@ class PHPSession implements SessionInterface {
         try {
             if(!$this->isStarted())
             {
-                !is_numeric($idle) ?: $idle = intval($idle);
+                $idle = intval($idle);
                 $idle >= 10 and $idle <= 60 ?: $idle = 60;
                 if (!session_start())
                     throw new \RuntimeException('Failed to start the session');
