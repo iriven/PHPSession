@@ -43,25 +43,14 @@ class PHPSession implements SessionInterface {
      */
     public function start(int $idle=60)
     {
-        try {
-            if(!$this->isStarted())
-            {
                 $idle = intval($idle);
                 $idle >= 10 and $idle <= 60 ?: $idle = 60;
-                if (!session_start())
-                    throw new \RuntimeException('Failed to start the session');
+                if(!$this->isStarted())session_start();
                 $this->set('_SessionId', session_id());
                 $this->set('_SessionIdle', $idle);
                 $this->set('_SessionTimeout', $this->setTimeout());
-
                 if (!$this->has('_PadLock'))
                     $this->set('_PadLock', sha1($this->sessionLock));
-            }
-        }
-        catch (\Throwable $e)
-        {
-            echo $e->getMessage();
-        }
         return $this;
     }
 
