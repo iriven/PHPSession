@@ -22,13 +22,13 @@ class PHPSession implements SessionInterface {
     {
         if(!$this->isStarted())
         {
-            ini_set( 'session.use_strict_mode', true);
             ini_set( 'session.use_cookies', 1);
-            ini_set( 'session.cookie_httponly', true);
-            ini_set( 'session.use_only_cookies', 1);
+            ini_set( 'session.cookie_httponly', 1);
             ini_set( 'session.cache_limiter', '');
             ini_set( 'session.cache_expire', 0);
-            ini_set( 'session.lazy_write', true);
+            ini_set( 'session.lazy_write', 1);
+            ini_set('session.use_strict_mode', 1);
+            ini_set('session.cookie_secure', 1);
         }
         $this->sessionLock = $this->generateSessionKey();
         if($autoStart) $this->start($idle);
