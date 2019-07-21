@@ -109,7 +109,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * Add an info message
      * 
      * @param  string  $message      The message text
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  boolean $sticky       Sticky the message (hides the close button)
      * @return object
      * 
@@ -123,7 +123,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * Add a success message
      * 
      * @param  string  $message      The message text
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  boolean $sticky       Sticky the message (hides the close button)
      * @return object
      * 
@@ -137,7 +137,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * Add a warning message
      * 
      * @param  string  $message      The message text
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  boolean $sticky       Sticky the message (hides the close button)
      * @return object
      * 
@@ -151,7 +151,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * Add an error message
      * 
      * @param  string  $message      The message text
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  boolean $sticky       Sticky the message (hides the close button)
      * @return object
      * 
@@ -165,7 +165,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * Add a sticky message
      * 
      * @param  string  $message      The message text
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  string  $type         The $msgType
      * @return object
      * 
@@ -194,7 +194,7 @@ class FlashMessages implements  FlashMessagesInterface {
      * 
      * @param  string  $message      The message text
      * @param  string  $type         The $msgType
-     * @param  string  $redirectUrl  Where to redirect once the message is added
+     * @param  string|null  $redirectUrl  Where to redirect once the message is added
      * @param  boolean $sticky       Whether or not the message is stickied 
      * @return object
      * 
@@ -238,7 +238,7 @@ class FlashMessages implements  FlashMessagesInterface {
     /**
      * See if there are any queued message
      * 
-     * @param  string  $type  The $msgType
+     * @param  string|null  $type  The $msgType
      * @return boolean
      * 
      */
