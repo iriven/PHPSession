@@ -287,12 +287,12 @@ class PHPSession implements SessionInterface {
      */
     private function CurrentTimestamp()
     {
-        $currentHour = date('H');
-        $currentMin = date('i');
-        $currentSec = date('s');
-        $currentMon = date('m');
-        $currentDay = date('d');
-        $currentYear = date('y');
+        $currentHour = (int)date('H');
+        $currentMin = (int)date('i');
+        $currentSec = (int)date('s');
+        $currentMon = (int)date('m');
+        $currentDay = (int)date('d');
+        $currentYear = (int)date('y');
         return mktime($currentHour, $currentMin, $currentSec, $currentMon, $currentDay, $currentYear);
     }
     /**
@@ -302,12 +302,12 @@ class PHPSession implements SessionInterface {
      */
     private function setTimeout()
     {
-        $currentHour = date('H');
-        $currentMin = date('i');
-        $currentSec = date('s');
-        $currentMon = date('m');
-        $currentDay = date('d');
-        $currentYear = date('y');
+        $currentHour = (int)date('H');
+        $currentMin = (int)date('i');
+        $currentSec = (int)date('s');
+        $currentMon = (int)date('m');
+        $currentDay = (int)date('d');
+        $currentYear = (int)date('y');
         $idle = $this->get('_SessionIdle');
         return mktime($currentHour, ($currentMin + $idle), $currentSec, $currentMon, $currentDay, $currentYear);
     }
