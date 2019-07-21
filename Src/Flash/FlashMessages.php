@@ -204,7 +204,7 @@ class FlashMessages implements  FlashMessagesInterface {
         if (isset($message[0])){
             if (strlen(trim($type)) > 1) $type = strtolower($type[0]);
             if (!array_key_exists($type, $this->msgTypes)) $type = self::defaultType;
-            $flashMessages = $this->iSession->get($this->flashLock,[]);
+            $flashMessages = (array) $this->iSession->get($this->flashLock,[]);
             if (!array_key_exists( $type, $flashMessages )) $flashMessages[$type] = [];
             $flashMessages[$type][] = ['sticky' => $sticky, 'message' => $message];
             $this->iSession->set($this->flashLock, $flashMessages);
