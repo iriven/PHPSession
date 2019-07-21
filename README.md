@@ -110,10 +110,9 @@ $session = new PHPSession();
             $session->close();
             header('location: login.php');
             exit;
-        } else {
-            // Keep renewing the session as long as they keep taking action.
-            $session->regenerate();
-        }
+        } 
+        // Keep renewing the session as long as they keep taking action.
+        $session->regenerate();
 ?>
 ```
 
