@@ -1,5 +1,4 @@
 # PHPSession
-===============
 
 The Iriven PHP Session class endeavors to make it easy to use basic session best practices in PHP scripts.
 
