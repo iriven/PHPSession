@@ -11,6 +11,7 @@ The Iriven PHP Session class endeavors to make it easy to use basic session best
 * Locks a session to a user agent and ip address to prevent theft.
 * Supports users behind proxies by identifying proxy headers in requests.
 * Easy to create, manage, and destroy session values.
+* supports flash messages
 * HTTPOnly session cookie
 * Session fingerprint validation
 * supports PHP objects vars storage
@@ -24,7 +25,6 @@ The Iriven PHP Session class endeavors to make it easy to use basic session best
     use \Iriven\Plugin\Sessions\PHPSession;
     require 'vendor/autoload.php';
 
-    $errors = array();
 
     // You'll definitely want to add more validation here and check against a
     // database or something. This is just an example.
@@ -40,14 +40,16 @@ The Iriven PHP Session class endeavors to make it easy to use basic session best
 
             $session->start(120); // Register for 2 hours.
             $session->set('_CurrentUser', $user);
+            $session->flash()->success('Login OK.');
             header('location: index.php');
             exit;
         } else {
-            $errors[] = 'Invalid login.';
+            $session->flash()->error('Invalid login.');
         }
     }
 ?>
 
+ $session->flash()->display();
 // Your form here.
 ```
 
