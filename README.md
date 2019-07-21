@@ -49,7 +49,7 @@ $session = new PHPSession();
 ### Features
 -----------------
 
-* Protects against fixation attacks by regenerating the ID periodically.
+- [x] Protects against fixation attacks by regenerating the ID periodically.
 * Prevents session run conditions caused by rapid concurrent connections (such as when Ajax is in use).
 * Locks a session to a user agent and ip address to prevent theft.
 * Supports users behind proxies by identifying proxy headers in requests.
