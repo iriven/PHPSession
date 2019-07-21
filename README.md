@@ -1,5 +1,7 @@
 # PHPSession
+===============
 
+The Iriven PHP Session class endeavors to make it easy to use basic session best practices in PHP scripts.
 
 ### Features
 -----------------
@@ -8,6 +10,9 @@
 * Prevents session run conditions caused by rapid concurrent connections (such as when Ajax is in use).
 * Locks a session to a user agent and ip address to prevent theft.
 * Supports users behind proxies by identifying proxy headers in requests.
+* Easy to create, manage, and destroy session values.
+* HTTPOnly session cookie
+* Session fingerprint validation
 * supports PHP objects vars storage
 
 ### Examples
