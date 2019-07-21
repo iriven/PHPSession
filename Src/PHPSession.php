@@ -23,7 +23,7 @@ class PHPSession implements SessionInterface {
         if(!$this->isStarted())
         {
             ini_set( 'session.use_strict_mode', true);
-            ini_set( 'session.use_cookies', true);
+            ini_set( 'session.use_cookies', 1);
             ini_set( 'session.cookie_httponly', true);
             ini_set( 'session.use_only_cookies', 1);
             ini_set( 'session.cache_limiter', '');
