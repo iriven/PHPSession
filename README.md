@@ -1,5 +1,7 @@
 # PHPSession
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
+
 The Iriven PHP Session class endeavors to make it easy to use basic session best practices in PHP scripts.
 
 ### Features
