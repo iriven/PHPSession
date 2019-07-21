@@ -27,7 +27,7 @@ class PHPSession implements SessionInterface {
             ini_set( 'session.cookie_httponly', true);
             ini_set( 'session.use_only_cookies', true);
             ini_set( 'session.cache_limiter', '');
-            ini_set( 'session.cache_expire', false);
+            ini_set( 'session.cache_expire', 0);
             ini_set( 'session.lazy_write', true);
         }
         $this->sessionLock = $this->generateSessionKey();
