@@ -209,7 +209,7 @@ class FlashMessages implements  FlashMessagesInterface {
             $flashMessages[$type][] = ['sticky' => $sticky, 'message' => $message];
             $this->iSession->set($this->flashLock, $flashMessages);
         }
-        if (!is_null($redirectUrl)) $this->redirectUrl = $redirectUrl;
+        if ($redirectUrl) $this->redirectUrl = $redirectUrl;
         $this->doRedirect();
         return $this;
     }
