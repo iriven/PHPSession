@@ -8,6 +8,44 @@
 
 The Iriven PHP Session class endeavors to make it easy to use basic session best practices in PHP scripts.
 
+
+### Setup
+-----------------
+ Add a `composer.json` file to your project:
+
+```javascript
+{
+  "require": {
+      "Iriven/PHPSession": "v1.0.0"
+  }
+}
+```
+
+Then provided you have [composer](http://getcomposer.org) installed, you can run the following command:
+
+```bash
+$ composer.phar install
+```
+
+That will fetch the library and its dependencies inside your vendor folder. Then you can add the following to your
+.php files in order to use the library (if you don't already have one).
+
+```php
+require 'vendor/autoload.php';
+```
+
+Then you need to `use` the relevant class, and instantiate the class. For example:
+
+
+### Getting Started
+-----------------
+```php
+require 'vendor/autoload.php';
+use \Iriven\Plugin\Sessions\PHPSession;
+
+$session = new PHPSession();
+```
+
 ### Features
 -----------------
 
