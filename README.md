@@ -37,7 +37,7 @@ The Iriven PHP Session class endeavors to make it easy to use basic session best
                 'username' => $_POST['username']
             );
 
-            $session->start(120); // Register for 2 hours.
+            $session->start(30); // Register for 30 minutes inactive delay.
             $session->set('_CurrentUser', $user);
             $session->flash()->success('Login OK.');
             header('location: index.php');
