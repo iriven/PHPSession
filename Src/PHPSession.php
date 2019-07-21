@@ -123,7 +123,7 @@ class PHPSession implements SessionInterface {
      * Get item from session.
      *
      * @param string $key
-     * @param null $default
+     * @param mixed|null $default
      * @return mixed|null
      */
     public function get($key, $default = null)
@@ -149,7 +149,7 @@ class PHPSession implements SessionInterface {
      * Extract session item, delete session item and finally return the item
      *
      * @param $key
-     * @param null $default
+     * @param mixed|null $default
      * @return mixed|null
      */
     public function pull($key, $default = null)
