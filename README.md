@@ -50,14 +50,14 @@ $session = new PHPSession();
 -----------------
 
 - [x] Protects against fixation attacks by regenerating the ID periodically.
-* Prevents session run conditions caused by rapid concurrent connections (such as when Ajax is in use).
-* Locks a session to a user agent and ip address to prevent theft.
-* Supports users behind proxies by identifying proxy headers in requests.
-* Easy to create, manage, and destroy session values.
-* supports flash messages
-* HTTPOnly session cookie
-* Session fingerprint validation
-* supports PHP objects vars storage
+- [x] Prevents session run conditions caused by rapid concurrent connections (such as when Ajax is in use).
+- [x] Locks a session to a user agent and ip address to prevent theft.
+- [x] Supports users behind proxies by identifying proxy headers in requests.
+- [x] Easy to create, manage, and destroy session values.
+- [x] supports flash messages
+- [x] HTTPOnly session cookie
+- [x] Session fingerprint validation
+- [x] supports PHP objects vars storage
 
 ### Examples
 -----------------
