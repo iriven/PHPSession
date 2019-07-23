@@ -80,11 +80,10 @@ $session = new PHPSession();
                 'user_id' => 1,
                 'username' => $_POST['username']
             );
-
             $session->start(30); // Register for 30 minutes inactive delay.
             $session->set('_CurrentUser', $user);
             $session->flash()->success('Login OK.');
-            header('location: index.php');
+            header('location: '.$session->referer('index.php'));
             exit;
         } else {
             $session->flash()->error('Invalid login.');
@@ -106,7 +105,14 @@ $session = new PHPSession();
     $session = new PHPSession();
         // Check to see if the session has expired.
         // If it has, end the session and redirect to login.
-        if (!$session->isValid()) {
+        if(!$session->isStarted())
+        {
+            $session->saveReferer($_SERVER['REQUEST-URI']);
+            header('location: login.php');
+            exit;
+        }
+        elseif(!$session->isValid()) 
+        {
             $session->close();
             header('location: login.php');
             exit;
