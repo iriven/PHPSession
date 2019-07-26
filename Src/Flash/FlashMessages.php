@@ -88,7 +88,7 @@ class FlashMessages implements  FlashMessagesInterface {
      */
     private $flashLock = '_FlashMsg';
     /**
-     * @var null
+     * @var string|null
      */
     private $redirectUrl = null;
 
