@@ -242,9 +242,6 @@ class PHPSession implements SessionInterface {
     public function isValid()
     {
         if(!$this->isStarted()) return false;
-        if(!$this->has('_SessionId')) return false;
-        if(!$this->has('_SessionTimeout')) return false;
-        if(!$this->has('_PadLock')) return false;
         if ($this->get('_SessionTimeout') <= $this->CurrentTimestamp())
             return false;
         return  sha1($this->sessionLock) === $this->get('_PadLock');
