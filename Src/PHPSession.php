@@ -171,12 +171,15 @@ class PHPSession implements SessionInterface {
      */
     private function generateSessionKey()
     {
-        $key = 'ù%)µ!Oa#?{z£=&2q[Q*}~|¤';
-        $ip = isset($_SERVER['HTTP_CLIENT_IP']) ?
-            $_SERVER['HTTP_CLIENT_IP'] : isset($_SERVER['HTTP_X_FORWARDE‌​D_FOR']) ?
-            $_SERVER['HTTP_X_FORWARDED_FOR'] : $_SERVER['REMOTE_ADDR'];
-        $userKey=hash_hmac('sha256', $ip, $key . $ip. $key. $_SERVER['HTTP_USER_AGENT'].(ip2long($ip) & ip2long('255.255.0.0')), true);
-        return  sha1(serialize($userKey . $ip . $_SERVER['HTTP_USER_AGENT'] . $key));
+        $customKey = 'ù%)µ!Oa#?{z£=&2q[Q*}~|¤';
+        $userAgent=$_SERVER['HTTP_USER_AGENT'];
+
+        $ipAddress = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ?
+            $_SERVER['HTTP_X_FORWARDED_FOR'] : isset($_SERVER['HTTP_CLIENT_IP']) ?
+            $_SERVER['HTTP_CLIENT_IP'] : $_SERVER['REMOTE_ADDR'];
+
+        $userKey=hash_hmac('sha256', $ipAddress, $customKey. $ipAddress. $customKey. $userAgent.(ip2long($ipAddress) & ip2long('255.255.0.0')), true);
+        return  sha1(serialize($userKey . $ipAddress . $userAgent . $customKey));
     }
 
     /**
