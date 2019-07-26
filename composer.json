@@ -1,5 +1,5 @@
 {
-  "name": "iriven/PHPSession",
+  "name": "iriven/phpsession",
   "description": "A lightweight but powerful and secure PHP session Class",
   "minimum-stability": "stable",
   "license": "proprietary",
