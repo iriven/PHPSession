@@ -287,7 +287,7 @@ class FlashMessages implements  FlashMessagesInterface {
         /**
      * Display the flash messages
      * 
-     * @param  mixed   $types   (null)  print all of the message types
+     * @param  mixed|null   $types   (null)  print all of the message types
      *                          (array)  print the given message types
      *                          (string)   print a single message type
      * @param  boolean $print   Whether to print the data or return it
@@ -297,13 +297,11 @@ class FlashMessages implements  FlashMessagesInterface {
     public function display($types=null, $print=true) 
     {
         $output = '';
-        if (!$this->iSession->has($this->flashLock)) return $output;
-        if (!$types) 
-            $types = array_keys($this->msgTypes);
-        if (!is_array($types)) $types = [$types];
+        isset($types) OR $types = array_keys($this->msgTypes);
+        is_array($types) OR $types = [$types];
         $types = array_map(function($v){
-            if (strlen(trim($v)) > 1) $v = strtolower(trim($v[0]));
-            return $v;
+        if (strlen(trim($v)) > 1) $v = strtolower(trim($v[0]));
+        return $v;
         },$types);
         $flashMessages = $this->iSession->get($this->flashLock,[]);
         foreach ($types as $type) {
@@ -311,7 +309,7 @@ class FlashMessages implements  FlashMessagesInterface {
             foreach( $flashMessages[$type] as $msgData ) {
                 $output .= $this->formatMessage($msgData, $type);
             }
-            $this->clear($type);            
+                $this->clear($type);            
         }
         if ($print) 
             print($output); 
