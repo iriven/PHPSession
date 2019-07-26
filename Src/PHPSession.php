@@ -318,6 +318,28 @@ class PHPSession implements SessionInterface {
     }
 
     /**
+     * store user authentication data in session
+     * 
+     * @param array|object $data
+     * @return $this
+     */
+    public function registerUser($data=[]){
+        if($this->isValid())
+            $this->set('_CurrentUser', $data);
+        return $this;
+    }
+
+    /**
+     * checks to see if current user has already signed in.
+     * 
+     * @return bool|mixed|null
+     */
+    public function userIsAuthenticated(){
+        if(!$this->isValid()) return false;
+        return $this->has('_CurrentUser')?$this->get('_CurrentUser'):false;
+    }
+    
+    /**
      * magic method Set key/value in session.
      *
      * @param string $key
