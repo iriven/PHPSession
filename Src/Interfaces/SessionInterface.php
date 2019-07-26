@@ -25,6 +25,8 @@ interface SessionInterface
     public function isValid();
     public function regenerate();
     public function close();
+    public function registerUser($data=[]);
+    public function userIsAuthenticated();
     public function __set($key, $value);
     public function __get($key);
 }
