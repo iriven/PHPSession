@@ -80,7 +80,7 @@ $session = new PHPSession();
                 'username' => $_POST['username']
             );
             $session->start(30); // Register for 30 minutes inactive delay.
-            $session->set('_CurrentUser', $user);
+            $session->registerUser($user);
             $session->flash()->success('Login OK.');
             header('location: '.$session->referer('index.php'));
             exit;
@@ -106,11 +106,12 @@ $session = new PHPSession();
         // If it has, end the session and redirect to login.
         if(!$session->isStarted())
         {
+            $session->start(30); // Register for 30 minutes inactive delay.
             $session->saveReferer($_SERVER['REQUEST-URI']);
             header('location: login.php');
             exit;
         }
-        elseif(!$session->isValid()) 
+        elseif(!$session->userIsAuthenticated()) 
         {
             $session->close();
             header('location: login.php');
