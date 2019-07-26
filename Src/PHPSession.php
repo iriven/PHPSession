@@ -29,6 +29,7 @@ class PHPSession implements SessionInterface {
             ini_set( 'session.lazy_write', 1);
             ini_set('session.use_strict_mode', 1);
             ini_set('session.cookie_secure', 1);
+            ini_set( 'session.use_trans_sid', false );
         }
         $this->sessionLock = $this->generateSessionKey();
         if($autoStart) $this->start($idle);
