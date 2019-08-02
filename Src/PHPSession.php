@@ -177,10 +177,10 @@ class PHPSession implements SessionInterface {
         $RemoteIPKeys =['HTTP_X_COMING_FROM', 'HTTP_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_X_CLUSTER_CLIENT_IP',
                         'HTTP_X_FORWARDED', 'HTTP_VIA', 'HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'];
         foreach ($RemoteIPKeys AS $IPKey):
-            if(!isset($_SERVER[$IPKey])) continue;
-            if(empty($_SERVER[$IPKey])) continue;
+            if(isset($_SERVER[$IPKey]) AND !empty($_SERVER[$IPKey])) {
             $ipAddress = $_SERVER[$IPKey]; 
             break;
+            }
         endforeach;
         if (($CommaPos = strpos($ipAddress, ',')) > 0)
             $ipAddress = substr($ipAddress, 0, ($CommaPos - 1));
