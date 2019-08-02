@@ -16,3 +16,13 @@ checks:
 coding_style:
     php: {  }
 filter: {  }
+tools:
+    # Similar Code Detector
+    php_sim: true
+    php_cpd: false
+
+    # Metrics
+    php_pdepend: true
+
+    # Some Metrics + Bug Detection/Auto-Fixes
+    php_analyzer: true
