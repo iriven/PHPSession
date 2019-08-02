@@ -173,13 +173,31 @@ class PHPSession implements SessionInterface {
     {
         $customKey = 'ù%)µ!Oa#?{z£=&2q[Q*}~|¤';
         $userAgent=$_SERVER['HTTP_USER_AGENT'];
-        $ipAddress = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ?
-            $_SERVER['HTTP_X_FORWARDED_FOR'] : isset($_SERVER['HTTP_CLIENT_IP']) ?
-            $_SERVER['HTTP_CLIENT_IP'] : $_SERVER['REMOTE_ADDR'];
+        $ipAddress = $this->getRemoteIP();
         $userKey=hash_hmac('sha256', $ipAddress, $customKey. $ipAddress. $customKey. $userAgent.(ip2long($ipAddress) & ip2long('255.255.0.0')), true);
         return  sha1(serialize($userKey . $ipAddress . $userAgent . $customKey));
     }
-
+    /**
+     * Auto Get the current visitor IP Address
+     * @return string
+     */
+    private function getRemoteIP()
+    {
+        $ip = null;
+        $RemoteIPKeys =['HTTP_X_COMING_FROM', 'HTTP_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_X_CLUSTER_CLIENT_IP',
+                        'HTTP_X_FORWARDED', 'HTTP_VIA', 'HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'];
+        foreach ($RemoteIPKeys AS $IPKey):
+            if(array_key_exists($IPKey,$_SERVER))
+            {
+                if (!strlen($_SERVER[$IPKey])) continue;
+                $ip = $_SERVER[$IPKey];
+                break;
+            }
+            endforeach;
+        if (($CommaPos = strpos($ip, ',')) > 0)
+            $ip = substr($ip, 0, ($CommaPos - 1));
+        return $ip?:'0.0.0.0';
+    }
     /**
      * Return the referer URL if present, otherwise the `$AlternateUrl`.
      * After that, reset the referer attribute of the session.
