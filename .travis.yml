@@ -6,9 +6,34 @@ php:
   - 7.1
   - 7.2
   - 7.3
+  - hhvm
+  - nightly
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+matrix:
+  include:
+    - php: 7.0
+      env: COMPOSER_FLAGS="--prefer-lowest"
+  allow_failures:
+    - php: nightly
+    - php: hhvm
+  fast_finish: true
+  
+before_script:
+  - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d && echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - travis_wait composer update --prefer-dist --no-interaction $COMPOSER_FLAGS  
   
 script:
   - echo 'Iriven PHP Session Library'
+  - mkdir -p build/logs build/cov
+  
+after_script:
+  - php bin/coveralls -v  
   
 before_install:
   - travis_retry composer self-update
