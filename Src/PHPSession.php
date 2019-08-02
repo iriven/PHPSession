@@ -172,20 +172,11 @@ class PHPSession implements SessionInterface {
     private function generateSessionKey()
     {
         $customKey = 'ù%)µ!Oa#?{z£=&2q[Q*}~|¤';
-        $userAgent=$_SERVER['HTTP_USER_AGENT'];
-        $ipAddress = '0.0.0.0';
-        $RemoteIPKeys =['HTTP_X_COMING_FROM', 'HTTP_FORWARDED', 'HTTP_FORWARDED_FOR', 'HTTP_X_CLUSTER_CLIENT_IP',
-                        'HTTP_X_FORWARDED', 'HTTP_VIA', 'HTTP_CLIENT_IP','HTTP_X_FORWARDED_FOR','REMOTE_ADDR'];
-        foreach ($RemoteIPKeys AS $IPKey):
-            if(isset($_SERVER[$IPKey]) AND !empty($_SERVER[$IPKey])) {
-            $ipAddress = $_SERVER[$IPKey]; 
-            break;
-            }
-        endforeach;
-        if (($CommaPos = strpos($ipAddress, ',')) > 0)
-            $ipAddress = substr($ipAddress, 0, ($CommaPos - 1));
-        $userKey=hash_hmac('sha256', $ipAddress, $customKey. $ipAddress. $customKey. $userAgent.(ip2long($ipAddress) & ip2long('255.255.0.0')), true);
-        return  sha1(serialize($userKey . $ipAddress . $userAgent . $customKey));
+        $ipAddress = isset($_SERVER['HTTP_X_FORWARDED_FOR']) ?
+            $_SERVER['HTTP_X_FORWARDED_FOR'] : isset($_SERVER['HTTP_CLIENT_IP']) ?
+            $_SERVER['HTTP_CLIENT_IP'] : $_SERVER['REMOTE_ADDR'];
+        $userKey=hash_hmac('sha256', $ipAddress, $customKey. $ipAddress. $customKey. $_SERVER['HTTP_USER_AGENT'].(ip2long($ipAddress) & ip2long('255.255.0.0')), true);
+        return  sha1(serialize($userKey . $ipAddress . $_SERVER['HTTP_USER_AGENT'] . $customKey));
     }
     
     /**
