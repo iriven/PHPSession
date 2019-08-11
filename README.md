@@ -72,15 +72,15 @@ $session = new PHPSession();
     // You'll definitely want to add more validation here and check against a
     // database or something. This is just an example.
     if (! empty($_POST)) {
+        $session = new PHPSession();
+        $session->start(30); // Register for 30 minutes inactive delay.
         if ($_POST['username'] == 'user' && $_POST['password'] == 'pwd') {
-            $session = new PHPSession();
-
+            
             // You can define what you like to be stored.
             $user = array(
                 'user_id' => 1,
                 'username' => $_POST['username']
             );
-            $session->start(30); // Register for 30 minutes inactive delay.
             $session->registerUser($user);
             $session->flash()->success('Login OK.');
             header('location: '.$session->referer('index.php'));
