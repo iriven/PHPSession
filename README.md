@@ -5,7 +5,6 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iriven/PHPSession/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![Code Coverage](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/iriven/PHPSession/?branch=master)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/iriven/phpsession.svg?style=flat-square)]()
 
 The Iriven PHP Session class endeavors to make it easy to use basic session best practices in PHP scripts.
 
