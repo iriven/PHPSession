@@ -41,7 +41,7 @@ tools:
 
     # Some Metrics + Bug Detection/Auto-Fixes
     php_analyzer: true
-    php_code_coverage: false    
+    php_code_coverage: true    
     php_loc:
         enabled: true
         excluded_dirs: [Examples]
