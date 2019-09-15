@@ -3,6 +3,7 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XDCFPNTKUC4TU)
 [![Build Status](https://travis-ci.org/iriven/PHPSession.svg?branch=master)](https://travis-ci.org/iriven/PHPSession)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iriven/PHPSession/?branch=master)
+[![GitHub license](https://img.shields.io/badge/license-AGPL-blue.svg)](https://github.com/iriven/PHPSession/blob/master/LICENSE)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![Code Coverage](https://scrutinizer-ci.com/g/iriven/PHPSession/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/iriven/PHPSession/?branch=master)
 
